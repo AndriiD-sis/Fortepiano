@@ -1,4 +1,5 @@
 from pygame import *
+from menu import *
 from settings import WINDOW_WIDTH, WINDOW_HEIGHT, WHITE, KEYS
 from keys import create_key_rects, draw_keys
 from sounds import load_sounds
@@ -8,8 +9,19 @@ keys_list = list(KEYS.keys())
 pressed = set()
 key_rects = create_key_rects(7)
 
+win = MenuWindow()
+win.mainloop()
+selected_theme = win.main_topic if win.main_topic else "light"
+if selected_theme == "light":
+    WHITE = (255, 255, 255)
+    KEY_COLOR = (200, 200, 200)
+else:
+    WHITE = (30, 30, 30)
+    KEY_COLOR = (70, 70, 70)
+
 init()
 screen = display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+display.set_caption("Fortepiano")
 running = True
 while running:
    screen.fill(WHITE)
