@@ -9,6 +9,14 @@ keys_list = list(KEYS.keys())
 pressed = set()
 key_rects = create_key_rects(7)
 
+win = MenuWindow()
+win.mainloop()
+selected_theme = win.main_topic if win.main_topic else "light"
+if selected_theme == "light":
+    WHITE = (255, 255, 255)
+else:
+    WHITE = (30, 30, 30)
+
 init()
 screen = display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 display.set_caption("Fortepiano")

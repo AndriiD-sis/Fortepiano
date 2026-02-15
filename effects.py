@@ -4,11 +4,19 @@ from settings import BLACK
 C_IMG = transform.scale(image.load("assets/images/notes/c.png"), (50, 50))
 D_IMG = transform.scale(image.load("assets/images/notes/d.png"), (50, 50))
 E_IMG = transform.scale(image.load("assets/images/notes/e.png"), (50, 50))
+F_IMG = transform.scale(image.load("assets/images/notes/f.png"), (50, 50))
+G_IMG = transform.scale(image.load("assets/images/notes/g.png"), (50, 50))
+A_IMG = transform.scale(image.load("assets/images/notes/a.png"), (50, 50))
+B_IMG = transform.scale(image.load("assets/images/notes/b.png"), (50, 50))
 
 NOTE_IMAGES = {
     "C": C_IMG,
     "D": D_IMG,
-    "E": E_IMG
+    "E": E_IMG,
+    "F": F_IMG,
+    "G": G_IMG,
+    "A": A_IMG,
+    "B": B_IMG
 }
 
 FLYING_NOTES = []

@@ -6,7 +6,11 @@ KEY_UNPRESSED = transform.scale(image.load("assets/images/key_unpressed.png"), (
 NOTE_BY_INDEX = {
     0: "C",
     1: "D",
-    2: "E"
+    2: "E",
+    3: "F",
+    4: "G",
+    5: "A",
+    6: "B"
 }
 
 PREV_PRESSED = set()
