@@ -1,12 +1,12 @@
 from pygame import Rect, transform, image
-from effects import spawn_flying_note, update_and_draw_flying_notes
+from effects import spawn_flying_notes, update_and_draw_flying_notes
 
 KEY_UNPRESSED = transform.scale(image.load("assets/images/key_unpressed.png"), (100, 250))
 
 NOTE_BY_INDEX = {
-    0: "c",
-    1: "d",
-    2: "e"
+    0: "C",
+    1: "D",
+    2: "E"
 }
 
 PREV_PRESSED = set()
@@ -17,10 +17,8 @@ def draw_keys(screen, key_rects, pressed_keys):
     for i, rect in enumerate(key_rects):
         is_pressed = i in pressed_keys
         screen.blit(KEY_UNPRESSED, (rect.x, rect.y))
-
         if is_pressed and i not in PREV_PRESSED:
-            spawn_flying_note(rect, NOTE_BY_INDEX.get(i))
-
+            spawn_flying_notes(rect, NOTE_BY_INDEX.get(i))
     PREV_PRESSED = pressed_set
     update_and_draw_flying_notes(screen)
 

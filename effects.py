@@ -1,34 +1,34 @@
 from pygame import draw, transform, image
 from settings import BLACK
 
-c_image = transform.scale(image.load("assets/images/notes/c.png"), (50, 50))
-d_image = transform.scale(image.load("assets/images/notes/d.png"), (50, 50))
-e_image = transform.scale(image.load("assets/images/notes/e.png"), (50, 50))
+C_IMG = transform.scale(image.load("assets/images/notes/c.png"), (50, 50))
+D_IMG = transform.scale(image.load("assets/images/notes/d.png"), (50, 50))
+E_IMG = transform.scale(image.load("assets/images/notes/e.png"), (50, 50))
 
 NOTE_IMAGES = {
-    "c": c_image,
-    "d": d_image,
-    "e": e_image
+    "C": C_IMG,
+    "D": D_IMG,
+    "E": E_IMG
 }
 
 FLYING_NOTES = []
 
-def spawn_flying_note(rect, note_name: str | None):
+def spawn_flying_notes(rect, note_name:str | None):
     if not note_name:
         return
     img = NOTE_IMAGES.get(note_name)
     if not img:
         return
-    x = rect.centerx = img.get_width() // 2
-    y = rect.y - img.get_height() - 10
-    FLYING_NOTES.append({"img": img, "x": x, "y": y, "vy": -1})
+    x = rect.centerx - img.get_width() // 2
+    y = rect.top - img.get_height() - 10
+    FLYING_NOTES.append({"image": img, "x": x, "y": y, "vy": -1})
 
 def update_and_draw_flying_notes(screen):
     to_remove = []
     for n in FLYING_NOTES:
         n["y"] += n["vy"]
-        screen.blit(n["img"], (n["x"], n["y"]))
-        if n["y"] + n["img"].get_height() < 0:
+        screen.blit(n["image"], (n["x"], n["y"]))
+        if n["y"] + n["image"].get_height() < 0:
             to_remove.append(n)
     for n in to_remove:
         FLYING_NOTES.remove(n)
