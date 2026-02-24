@@ -2,6 +2,9 @@ import pygame
 from buttons import Button
 from ui.slider import Slider
 
+settings_2_img = pygame.image.load("assets/images/buttons/settings_unhover.png")
+settings_2_img = pygame.transform.scale(settings_2_img, (50, 50))
+
 class SettingsMenu:
     def __init__(self, screen_rect, initial_volume, on_change, on_back):
         self.screen_rect = screen_rect
@@ -12,13 +15,11 @@ class SettingsMenu:
         top = 140
 
         self.back_btn = Button(
-            60, 20, 50, 50, self._back
+            700, 20, settings_2_img, self._back
         )
 
         self.volume_slider = Slider(
-            cx - 200, top, 400,
-            0.0, 1.0, initial=initial_volume,
-            label="Гучність"
+            cx - 200, top, 400, 6, 0.0, 1.0, initial_volume, "Гучність"
         )
 
         self.volume_slider.set_on_change(self._on_volume)

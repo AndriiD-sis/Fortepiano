@@ -1,17 +1,15 @@
 import pygame
 
 class Button:
-    def __init__(self, x, y, width, height, action=None):
-        self.x = x
-        self.y = y
-        self.rect = pygame.Rect(x, y, width, height)
+    def __init__(self, x, y, image, action=None):
+        self.image = image
+        self.rect = self.image.get_rect(topleft=(x, y))
         self.action = action
-        self.color = (200, 200, 200)
 
     def draw(self, screen):
-        pygame.draw.rect(screen, self.color, self.rect)
+        screen.blit(self.image, self.rect.topleft)
 
-    def handle_event(screen, event):
-        if event.type == event.MOUSEBUTTONDOWN and self.rect.collidepoint(event.pos):
+    def handle_event(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN and self.rect.collidepoint(event.pos):
             if self.action:
                 self.action()
